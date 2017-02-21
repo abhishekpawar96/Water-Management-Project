@@ -1,0 +1,5 @@
+{
+    "connectionString": "mongodb://127.0.0.1:27017/alldata",
+    "apiUrl": "http://localhost:3000/api",
+    "secret": "REPLACE THIS WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+}

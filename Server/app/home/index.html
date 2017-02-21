@@ -1,0 +1,147 @@
+<div id="page">
+    <div class="container">
+
+<!--**************************              CUSTOMER DASHBOARD                                      *************************-->
+
+        <div class="customer" ng-if="vm.user.role === 'customer'">
+            <!-- Header -->
+            <div id="header">
+                 <div id="logo">
+                    <h1>Analytics Dashboard User             </h1>    
+                    <h3>Hi {{vm.user.firstname}}            </h3>
+                    <h4>Flat Number.{{vm.user.flatnumber}},   </h4>
+                    <h4>{{vm.user.societyname}},            </h4>
+                    <h4>{{vm.user.regionname}}              </h4>
+                </div>  
+            </div>
+            <!-- /Header -->
+
+            <div id="wrappper">
+
+                <div class="row">
+                    <div class="12u chart-wrapper" id="starttime-linechart">
+                        <div class="chart-title">           <strong> Daily Water Consumption (Litres)   </strong> </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="8u chart-wrapper" id="sensorvalue-barchart">
+                        <div class="chart-title">           <strong> Daily Water Sensor Value           </strong> </div>
+                    </div>
+                    <div class="4u chart-wrapper" id="sid-piechart">
+                        <div class="chart-title">           <strong> Roomwise Water Consumption         </strong> </div>					
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="12u chart-wrapper" id="starttime-barchart">
+                        <div class="chart-title">           <strong> Daily Water Consumption (Litres)   </strong> </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <table class = "table table-striped">
+                        <thead>
+                            <tr>
+                                <td>SENSOR NUMBER       </td>
+                                <td>USAGE               </td>
+                                <td>FROM                </td>
+                                <td>TO                  </td>
+                            </tr>  
+                        </thead>
+                        <tbody>    
+                            <tr ng-repeat ="item in vm.sensor | limitTo: 10">
+                                <td>{{item.sid}}        </td>
+                                <td>{{item.sensorvalue}}</td>
+                                <td>{{item.starttime}}  </td>
+                                <td>{{item.endtime}}    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+        
+<!--*********************************               END OF DASHBOARD                                ************************-->
+         
+<!--**********************************              ADMINISTRATOR DASHBOARD                         *************************-->
+
+        <div class="admin" ng-if="vm.user.role === 'admin'"=>
+            <!-- Header -->
+            <div id="header">
+                 <div id="logo">
+                    <h1>Administrator Analytics Dashboard   </h1>    
+                    <h3>Hello {{vm.user.firstname}}          </h3>
+                </div>  
+                
+                <div class="3u dc-data-count dc-chart" id="row-selection">
+                    <span><a href='javascript:dc.filterAll();dc.redrawAll();'><font color="#33CC99">Reset All</font></a></span>
+                </div>
+                
+            </div>
+            <!-- /Header -->
+            <div id="wrappper">
+                
+                <div class="row">
+                    <div class="4u chart-wrapper" id="total-water-consumed-admin">
+                        <div class="chart-title">           <strong> Total Water Consumed               </strong> </div>					
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="4u chart-wrapper" id="regional-piechart-admin">
+                        <div class="chart-title">           <strong> Regional Water Consumption  </strong> </div>					
+                    </div>
+               
+                    <div class="4u chart-wrapper" id="society-piechart-admin">
+                        <div class="chart-title">           <strong> Society Water Consumption  </strong> </div>					
+                    </div>
+               
+                    <div class="4u chart-wrapper" id="user-piechart-admin">
+                        <div class="chart-title">           <strong> User Water Consumption  </strong> </div>					
+                    </div>
+                    
+                     <div class="4u chart-wrapper" id="region-chart-admin">
+                        <div class="chart-title">           <strong> Consumption Count by Region        </strong> </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    
+                    <div class="4u chart-wrapper" id="society-chart-admin">
+                        <div class="chart-title">           <strong> Consumption Count by Society       </strong> </div>							
+                    </div>
+                    
+                    <div class="4u chart-wrapper" id="user-chart-admin">
+                        <div class="chart-title">           <strong> Consumption Count by User          </strong> </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="12u chart-wrapper" id="starttime-linechart-admin">
+                        <div class="chart-title">           <strong> Daily Water Consumption Timeline (Litres)   </strong> </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="12u chart-wrapper" id="sensorvalue-barchart-admin">
+                        <div class="chart-title">           <strong> Daily Water Sensor Value           </strong> </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="12u chart-wrapper" id="starttime-barchart-admin">
+                        <div class="chart-title">           <strong> Daily Water Consumption (Litres)   </strong> </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+         
+<!--*********************************               END OF DASHBOARD                                ************************-->
+       
+    </div>
+</div>

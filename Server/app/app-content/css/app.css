@@ -1,0 +1,16 @@
+body {
+   
+    padding: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+
+.flash-message {
+    margin-top: 20px;
+}
+
+
+tr:nth-child(even){
+   background-color:lightblue;
+}

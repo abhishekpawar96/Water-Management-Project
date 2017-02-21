@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SWA Water Management</title>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css"rel="stylesheet">
+    <link href="/node_modules/dc/dc.css" rel="stylesheet" />
+    <link href="app-content/css/app.css" rel="stylesheet" />
+</head>
+<body class="container">
+    <!-- header -->
+    <header>
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+            <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+            <li><a href="/login" target="_self">Logout</a></li>
+        </ul>
+        <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+    </header>
+    
+    <!-- main -->
+    <main ui-view></main>
+    
+    <!-- footer -->
+    <footer></footer>
+
+    <!-- external scripts -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/node_modules/crossfilter2/crossfilter.js"></script>
+    <script src="/node_modules/d3/d3.js"></script>
+    <script src="/node_modules/dc/dc.js"></script>
+    <script src="/app/app-content/js/queue.js"></script>
+    
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/user.service.js">     </script>
+    <script src="app-services/sensor.service.js">   </script>
+    <script src="app-services/flash.service.js">    </script>
+    <script src="home/index.controller.js">         </script>
+    <script src="account/index.controller.js">      </script>
+</body>
+</html>
