@@ -1,0 +1,133 @@
+<%- include('partials/header') %>
+<div class="form-container">
+    <h2>Register</h2>
+    <% if(locals.error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <form method="post">
+        <div>
+            <script type="text/javascript">
+                var Roles = ["admin","customer","regional head"];
+                var RegionNames = ["Kothrud", "Aundh","Deccan","Shaniwar Peth"];
+                var KothrudSociety = ["Mitcoe","Chakradhar Hsg. Soc.","Sarthi Shilip Soc.","Charulata Hsg. Soc.","Punj Vihar Hsg. Soc.","Sun Flower Hsg. Soc."];
+                var AundhSociety = ["Cosmos Hsg Soc.","Arihant Apartment Hsg Soc.","Shreyas Hsg Soc.","Vijaylaxmi Apts Hsg Soc.","Swapnashilp Hsg Soc."];
+                var DeccanSociety = ["The Gautam Hsg. Soc.","Navyug Hsg. Soc.","Anand Cop. Group Hsg. Soc.","Shreyas Hsg. Soc.","Dream House Hsg. Soc."];
+                var ShaniwarPethSociety = ["Blue Sky Hsg Soc.","Anubhav Hsg Soc.","Mantri Lawns Hsg Soc.","Konark Classic Hsg Soc.","Blue Sky Hsg Soc.","Silver Leaf Hsg Soc"];
+                
+                function addRole() {
+                    var roleSelect = document.getElementById("RoleSelect");
+                    roleSelect.innerHTML = "";
+                    for (i = 0; i < Roles.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = Roles[i];
+                        roleSelect.add(option);
+                    } 
+                    document.getElementById("role").value = "";
+                }
+                
+                function updateRole(){
+                    var roleSelect = document.getElementById("RoleSelect");
+                    var roleText = document.getElementById("role");
+                    roleText.value = roleSelect.value;
+                }
+                
+                function addRegion() {
+                    var regionSelect = document.getElementById("RegionNameSelect");
+                    regionSelect.innerHTML = "";
+                    for (i = 0; i < RegionNames.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = RegionNames[i];
+                        regionSelect.add(option);
+                    } 
+                    document.getElementById("regionname").value = "";
+                }
+                
+                function updateRegion(){
+                    var regionSelect = document.getElementById("RegionNameSelect");
+                    var regionText = document.getElementById("regionname");
+                    regionText.value = regionSelect.value;
+                    switch(regionText.value){
+                        case "Kothrud":         
+                            addSociety(KothrudSociety); 
+                            break;
+                        case "Aundh":           
+                            addSociety(AundhSociety); 
+                            break;
+                        case "Deccan":          
+                            addSociety(DeccanSociety); 
+                            break;
+                        case "Shaniwar Peth":   
+                            addSociety(ShaniwarPethSociety); 
+                            break; 
+                    }
+                }
+                
+                function addSociety(SocietyArray){
+                    var societySelect = document.getElementById("SocietyNameSelect");
+                    societySelect.innerHTML = "";
+                    for (i = 0; i < SocietyArray.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = SocietyArray[i];
+                        societySelect.add(option);
+                    } 
+                    document.getElementById("societyname").value = ""; 
+                }
+                    
+                function updateSociety(){
+                    var societySelect = document.getElementById("SocietyNameSelect");
+                    var societyText = document.getElementById("societyname");
+                    societyText.value = societySelect.value;
+                }
+            </script>
+        </div>
+        <div class="form-group">
+            <label for="firstname">First name</label>
+            <input type="text" name="firstname" id="firstname" class="form-control" value="<%= locals.firstname || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last name</label>
+            <input type="text" name="lastname" id="lastname" class="form-control" value="<%= locals.lastname || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="uid" id="uid" class="form-control" value="<%= locals.uid || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="<%= locals.email || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="phonenumber">Phone Number</label>
+            <input type="text" name="phonenumber" id="phonenumber" class="form-control" value="<%= locals.phonenumber || '' %>"required />
+        </div>
+        <div class="form-group">
+            <label for="regionname">Region Name</label>
+            <select id="RegionNameSelect" onfocus="addRegion();" onchange="updateRegion();" required></select>
+            <input type="text" name="regionname" id="regionname" class="form-control" value="<%= locals.regionname || '' %>" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="societyname">Society Name</label>
+            <select id="SocietyNameSelect"  onfocus="updateRegion();" onchange="updateSociety();" required></select>
+            <input type="text" name="societyname" id="societyname" class="form-control" value="<%= locals.societyname || '' %>" readonly />
+        </div>
+        <div class="form-group">
+            <label for="flatnumber">Flat Number</label>
+            <input type="text" name="flatnumber" id="flatnumber" class="form-control" value="<%= locals.flatnumber || '' %>"required />
+        </div>
+         <div class="form-group">
+            <label for="role">Role</label>
+             <select id="RoleSelect" onfocus="addRole();" onchange="updateRole();" required></select>
+            <input type="text" name="role" id="role" class="form-control" value="<%= locals.role || '' %>" readonly />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="/login" class="btn btn-link">Cancel</a>
+        </div>
+        
+    </form>
+</div>
+<%- include('partials/footer') %>
